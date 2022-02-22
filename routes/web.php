@@ -33,8 +33,14 @@ Route::get('/about', function () {
         "club" => "AS ROMA"
     ]);
 });
+Route::get('/add', [PostController::class, 'add']);
+Route::get('/add/post/checkSlug', [PostController::class, 'checkSlug']);
 
+// Edit
+Route::get('/posts', [PostController::class, 'all']);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+Route::get('/posts/edit/{post:slug}', [PostController::class, 'edit']);
+Route::post('/edit/{post:slug}', [PostController::class, 'editPost']);
 
 Route::get('/categories', function(){
     return view('categories',[
